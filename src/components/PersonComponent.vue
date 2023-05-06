@@ -1,6 +1,6 @@
 <template>
   <div class="person-card-wrapper">
-    <div class="bg-white shadow-md rounded-md p-4 mb-4 person-card" :class="{ 'border-2 border-pink-500': isFavorite }" @click="handleClick" :style="cardStyle">
+    <div class="bg-white shadow-md rounded-md p-4 mb-4 cursor-pointer hover:shadow-2xl transition-all duration-150 ease-in-out" :class="{ 'border-2 border-pink-500': isFavorite }"  >
       <div class="flex items-center justify-between mb-4">
         <img class="rounded-full w-12 h-12 mr-4" :src="image" :alt="name">
         <button class="text-gray-500 hover:text-pink-500 focus:outline-none" @click="toggleFavorite">
@@ -47,18 +47,7 @@ export default {
     }
   },
   computed: {
-    cardStyle() {
-      if (this.clicked) {
-        return {
-          backgroundColor: '#F9A8D4',
-          animation: 'pulse 0.5s'
-        }
-      } else {
-        return {
-          backgroundColor: 'white'
-        }
-      }
-    }
+    
   }
 }
 </script>
@@ -75,15 +64,7 @@ export default {
   backface-visibility: hidden;
 }
 
-.person-card:hover {
-  transform: rotateY(10deg) translateY(-5px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-}
 
-.person-card:hover .person-card-back {
-  transform: rotateY(-180deg);
-}
 
 .person-card-front, .person-card-back {
   position: absolute;
