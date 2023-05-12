@@ -5,7 +5,7 @@ import UseGrid from "./pages/UseGrid.vue";
 
 
 const routes = [
-  { path: "/", name: "PersonsPage", component: PersonsPage },
+  { path: "/all", name: "PersonsPage", component: PersonsPage },
   { path: "/1", name: "UseGrid", component: UseGrid },
   
 ];
