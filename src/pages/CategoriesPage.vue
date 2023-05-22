@@ -5,12 +5,21 @@
       <div
         v-for="(child, index) in data[0].children"
         :key="index"
-        class="bg-white rounded-lg shadow-md border border-gray-300 hover:shadow-lg"
+        class="bg-white rounded-lg shadow-md border border-gray-300 hover:shadow-lg text-center"
       >
-        <div class="h-56 bg-gray-300 rounded-t-lg flex items-center justify-center">
-          <h2 class="text-white font-bold text-lg">{{ child.name }}</h2>
+        <div
+          class="h-40 bg-gray-300 rounded-t-lg flex items-center justify-center"
+        >
+          <img
+            class="h-24 w-24 object-cover rounded-full"
+            :src="getImageUrl(child.slug)"
+            alt="Image of {{ child.name }}"
+          />
         </div>
         <div class="p-4">
+          <h2 class="text-gray-900 font-semibold text-lg mb-2">
+            {{ child.name }}
+          </h2>
           <p class="text-gray-700 text-base mb-2">تعداد: {{ child.number }}</p>
         </div>
       </div>
@@ -44,6 +53,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    getImageUrl(slug) {
+      return `https://source.unsplash.com/200x200/?${slug}`;
+    },
   },
 };
 </script>
