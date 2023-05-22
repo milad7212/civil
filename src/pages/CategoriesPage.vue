@@ -5,11 +5,9 @@
       <div
         v-for="(child, index) in data[0].children"
         :key="index"
-        class="bg-white rounded-lg shadow-md"
+        class="bg-white rounded-lg shadow-md border border-gray-300 hover:shadow-lg"
       >
-        <div
-          class="h-56 bg-gray-300 rounded-t-lg flex items-center justify-center"
-        >
+        <div class="h-56 bg-gray-300 rounded-t-lg flex items-center justify-center">
           <h2 class="text-white font-bold text-lg">{{ child.name }}</h2>
         </div>
         <div class="p-4">
@@ -19,6 +17,7 @@
     </div>
   </div>
 </template>
+
 <style>
 /* Styles for small screens */
 @media (max-width: 639px) {
@@ -27,6 +26,7 @@
   }
 }
 </style>
+
 <script>
 export default {
   data() {
