@@ -1,17 +1,17 @@
 <template>
   <div class="p-4">
     <h1 class="text-2xl font-bold mb-4">{{ data[0].name }}</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
       <div
-        v-for="(child, index) in data[0].children"
+        v-for="(child, index) in sortedChildren"
         :key="index"
-        class="bg-white rounded-lg shadow-md border border-gray-300 hover:shadow-lg text-center"
+        class="bg-white rounded-lg shadow-md border border-gray-300 hover:shadow-lg text-center card"
       >
         <div
-          class="h-40 bg-gray-300 rounded-t-lg flex items-center justify-center"
+          class="h-40 bg-gray-300 rounded-t-lg overflow-hidden flex items-center justify-center"
         >
           <img
-            class="h-24 w-24 object-cover rounded-full"
+            class="h-full w-full object-cover "
             :src="getImageUrl(child.slug)"
             alt="Image of {{ child.name }}"
           />
@@ -26,13 +26,55 @@
     </div>
   </div>
 </template>
-
-<style>
 /* Styles for small screens */
+<style>
 @media (max-width: 639px) {
   .grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Styles for card hover */
+.card:hover {
+  transform: translateY(-5px);
+  transition-duration: 0.3s;
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for card tooltip */
+.card .tooltip {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+.card:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Styles for progress bar */
+.progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #f1f1f1;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #4caf50;
 }
 </style>
 
@@ -52,11 +94,33 @@ export default {
           ],
         },
       ],
+   
+      loading: true,
     };
   },
+  created() {
+    this.loadData();
+  },
   methods: {
+    async loadData() {
+      try {
+        const response = await fetch("data.json");
+        this.data = await response.json();
+        this.loading = false;
+      } catch (error) {
+        console.log(error);
+      }
+    },
     getImageUrl(slug) {
       return `https://source.unsplash.com/200x200/?${slug}`;
+    },
+    getSortedChildren() {
+      return this.data[0].children.sort((a, b) => b.number - a.number);
+    },
+  },
+  computed: {
+    sortedChildren() {
+      return this.getSortedChildren();
     },
   },
 };
