@@ -1,8 +1,6 @@
 <template>
   <ToolbarComponent />
-  <v-btn prepend-icon="mdi-vuetify" variant="tonal">
-  Button
-</v-btn>
+  <v-btn prepend-icon="mdi-vuetify" variant="tonal"> Button </v-btn>
   <div class="container mx-auto py-8">
     <h1 class="text-3xl font-bold mb-4">Civil Engineers</h1>
     <div class="flex items-center mb-4">
@@ -64,9 +62,9 @@ export default {
     return {
       persons: [
         {
-          name: "John Doe",
-          bio: "John is a civil engineer with experience in structural design and project management.",
-          specialties: ["Structural Design", "Project Management"],
+          name: "میلاد حسنی",
+          bio: "همیشه سعی داشتم طرحم بهینه ترین حالت ممکن باشد که کارفرما محترم هزینه بیهوده نداشته باشد.",
+          specialties: ["محاسبات", "طراحی معماری","نظارت پایه 3",'محاسبات پایه 1',],
           image: "https://randomuser.me/api/portraits/men/1.jpg",
         },
         {

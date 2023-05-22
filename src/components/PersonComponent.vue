@@ -17,7 +17,7 @@
         <p class="text-gray-600">{{ bio }}</p>
       </div>
       <div class="mt-4">
-        <h3 class="text-gray-800 font-semibold mb-2">Specialties:</h3>
+        <h3 class="text-gray-800 font-semibold mb-2">تخصص ها:</h3>
         <ul class="list-disc pr-4">
           <li v-for="(specialty, index) in specialties" :key="index" class="text-gray-600">{{ specialty }}</li>
         </ul>
