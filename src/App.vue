@@ -1,3 +1,5 @@
+
+
 <template>
   
       <router-view></router-view>
@@ -19,3 +21,10 @@ export default {
   }),
 }
 </script>
+
+<style lang="css" >
+@import './assets/fonts.css';
+body {
+  font-family: 'Vazir-Medium', sans-serif;
+}
+</style>

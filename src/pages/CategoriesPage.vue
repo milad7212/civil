@@ -1,7 +1,7 @@
 <template>
   <div class="p-4">
     <h1 class="text-2xl font-bold mb-4">{{ data[0].name }}</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
+    <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-6 gap-4">
       <div
         v-for="(child, index) in sortedChildren"
         :key="index"
@@ -125,3 +125,7 @@ export default {
   },
 };
 </script>
+
+
+
+
