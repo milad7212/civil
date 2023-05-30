@@ -40,10 +40,13 @@
           <div v-for="person in people"
                :key="person.id"
                class="bg-white rounded shadow-lg overflow-hidden">
-            <div class="h-48 bg-gray-300"></div>
+            <div class="h-40  flex justify-center overflow-hidden bg-gray-300 relative">
+              <img class="h-full aspect-square" :src="imageSrc" alt="My Image"/>
+            </div>
             <div class="p-4">
               <h2 class="text-lg font-bold">{{ person.name }}</h2>
-              <p class="text-gray-700">{{ person.skills.join(', ') }}</p>
+              <p class="text-gray-700">{{ person.skills.join(' |  ') }}</p>
+              <p class="text-left my-2 text-gray-800">09139939426</p>
             </div>
           </div>
         </div>
@@ -53,16 +56,18 @@
 </template>
 
 <script>
+import myImage from '@/assets/images/1.jpg'
 export default {
   data() {
     return {
       showFilter: false,
       people: [
-        { id: 1, name: 'John Doe', skills: ['Plasterer', 'Rebarbender'] },
-        { id: 2, name: 'Jane Smith', skills: ['Plumber', 'Electrician'] },
-        { id: 3, name: 'Bob Johnson', skills: ['Carpenter', 'Painter'] },
+        { id: 1, name: 'میلاد حسنی', skills: ['مهندس عمران', 'برقکار','تراکتور'] },
+        { id: 2, name: 'سجاد حسنی', skills: ['داربست ', 'قالب بندی'] },
+        { id: 3, name: 'عباد حسنی', skills: ['طراحی نما', 'پیمانکار'] },
         // Add more people data
       ],
+      imageSrc: myImage
     };
   },
 };
