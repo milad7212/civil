@@ -4,6 +4,7 @@ import PersonsPage from "./pages/PersonsPage.vue";
 import CreateWork from "./pages/CreateWork.vue";
 import UseGrid from "./pages/UseGrid.vue";
 import Jobs from "./pages/JobsPage.vue";
+import ListJobsPage from "./pages/ListJobsPage.vue";
 import CategoriesPage from "./pages/CategoriesPage.vue";
 
 
@@ -13,6 +14,7 @@ const routes = [
   { path: "/jobs", name: "jobs", component: Jobs },
   { path: "/category", name: "CategoriesPage", component: CategoriesPage },
   { path: "/create", name: "CreateWork", component: CreateWork },
+  { path: "/2", name: "ListJobs", component: ListJobsPage },
   
 ];
 

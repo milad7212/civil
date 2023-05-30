@@ -1,9 +1,9 @@
 <template>
-  <div class="p-4">
-    <h1 class="text-2xl font-bold mb-4">{{ data[0].name }}</h1>
+  <div v-for="(data,indexParent) in dataSource" :key="data.name" class="cursor-pointer p-4">
+    <h1 class="text-2xl font-bold mb-4">{{ data.name }}</h1>
     <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-6 gap-4">
       <div
-        v-for="(child, index) in sortedChildren"
+        v-for="(child, index) in sortedChildren(indexParent)"
         :key="index"
         class="bg-white rounded-lg shadow-md border border-gray-300 hover:shadow-lg text-center card"
       >
@@ -82,7 +82,7 @@
 export default {
   data() {
     return {
-      data: [
+      dataSource: [
         {
           name: "مهندسین",
           children: [
@@ -93,6 +93,18 @@ export default {
             { name: "نقشه برداری", number: 5, slug: "land-surveyors" },
           ],
         },
+        {
+          name: "ماشین آلات",
+          children: [
+            { name: "جرثقل", number: 20, slug: "architects" },
+            { name: "لودر", number: 150, slug: "Loaders" },
+            { name: "تراکتور", number: 40, slug: "Bulldozers" },
+            { name: "کامیون", number: 60, slug: "Cranes" },
+            { name: "بونکر سیمان ", number: 5, slug: "Dump Trucks" },
+          ],
+        },
+
+      
       ],
    
       loading: true,
@@ -114,13 +126,13 @@ export default {
     getImageUrl(slug) {
       return `https://source.unsplash.com/200x200/?${slug}`;
     },
-    getSortedChildren() {
-      return this.data[0].children.sort((a, b) => b.number - a.number);
+    getSortedChildren(index) {
+      return this.dataSource[index].children.sort((a, b) => b.number - a.number);
     },
   },
   computed: {
     sortedChildren() {
-      return this.getSortedChildren();
+      return indexParent => this.getSortedChildren(indexParent);
     },
   },
 };
